@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "How Time Leaks Secrets"
 date: 2025-05-27
 ---
