@@ -105,9 +105,12 @@ Hosts should incorporate timing-side-channel checks into their regular security 
 # Closing Thoughts  
 Timing side-channel attacks reveal how even the most minor operational quirks, such as mere microseconds of delay, can become a powerful surveillance tool in the wrong hands. By walking through the attacker's process, from identifying a vulnerable string comparison and performing manual probes to scaling with Burp Suite and complete automation, we have seen just how straightforward it is to turn minute timing differences into a complete password recovery. We also saw that defending against these covert threats requires both vigilance and layered countermeasures: adopting constant-time comparisons, injecting controlled noise, enforcing strict rate limits, and maintaining uniform response patterns. Coupled with ethical restraint and proper authorization, these practices ensure that your systems remain blurred from would-be eavesdroppers, keeping every nanosecond tick of your application safe from prying eyes.
   
-# Additional Materials
-
-
+# Additional Materials  
+[OWASP: Test for Process Timing](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/10-Business_Logic_Testing/04-Test_for_Process_Timing)  
+  
+[Intel: Guidelines for Mitigating Timing Side Channels Against Cryptographic Implementations](https://www.intel.com/content/www/us/en/developer/articles/technical/software-security-guidance/secure-coding/mitigate-timing-side-channel-crypto-implementation.html)  
+  
+[CVE-2017-5361](https://nvd.nist.gov/vuln/detail/CVE-2017-5361)  
   
 <iframe
   width="560" height="315"
@@ -116,19 +119,7 @@ Timing side-channel attacks reveal how even the most minor operational quirks, s
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen>
 </iframe>
-
-
-  
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe
-    src="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/10-Business_Logic_Testing/04-Test_for_Process_Timing"
-    style="position: absolute; top:0; left:0; width:100%; height:100%; border:0;"
-    sandbox="allow-scripts allow-same-origin allow-popups"
-    scrolling="auto"
-    loading="lazy"
-    allowfullscreen>
-  </iframe>
-</div>
   
   
   
+**Footnotes**  
