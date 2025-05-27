@@ -87,12 +87,18 @@ Depending on the industry, timing-related exploits could violate legal framework
 [^2]: The Health Insurance Portability and Accountability Act. See more [here](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html).
 [^3]: The Payment Card Industry Data Security Standard. See more [here](https://www.pcisecuritystandards.org/standards/).
   
-# Mitigations and Best Practices
-To defend against timing side channels, developers can:
-- Use constant-time comparision functions.
-- Avoid algorithms with input-dependent complexity for sensitive checks.
-- Introduce uniform response delays.
-- Leverage rate limiting and anomaly detection to mitigate brute-force side-channel probing.
+# Mitigations and Best Practices  
+Preventing timing side-channel leaks requires a multi-layered approach, combining robust coding practices, architectural controls, and runtime defenses.  
+- **Constant-Time Comparisons**  
+Wherever possible, developers should replace vulnerable equality checks with constant-time routines that iterate over all input characters regardless of mismatches. Many cryptographic libraries (OpenSSL, libsodium, etc.) provide these secure comparison functions.
+- **Artifical Noise Injection**  
+Developers should introduce deliberate, randomized delays into authentication paths to mask true processing times. For example, a random sleep of 0–5 ms after each comparison. While this doesn’t eliminate the leak entirely, it makes statistical extraction far more resource-intensive.
+- **Strict Rate-Limiting and Lockout**  
+Servers should enforce per-account and per-IP rate limits on login attempts, and implement temporary lockouts after a defined number of failures. By reducing the total number of probes an attacker can perform, that significantly increases the time and cost required for a successful timing attack.
+- **Uniform Error Messages and Responses**  
+Developers must ensure that both successful and failed authentication attempts return identical status codes, headers, and payloads. Any variation (even in error descriptions) can provide additional side-channels for attackers to correlate with timing data.
+- **Continuous Monitoring and Testing**  
+Hosts should incorporate timing-side-channel checks into their regular security testing regimen. Using automated vulnerability scanners or in-house scripts to periodically verify that critical comparison routines remain constant-time and rate-limited under real-world load.
 
 # Further Reading
 
