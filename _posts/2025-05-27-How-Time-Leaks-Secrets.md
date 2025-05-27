@@ -3,7 +3,7 @@ title: "How Time Leaks Secrets"
 date: 2025-05-27
 ---
 # Introduction: Timing as a Threat
-When we think of cyberattacks, we often picture dramatic breaches: a hacker bypassing firewalls, exploiting buffer overflows, smashing the stack, or injecting malicious code. However, modern adversaries frequently rely on far subtler methods that leave no obvious trace: side-channel attacks. This class of exploit involves turning seemingly innocuous system behavior into a powerful surveillance tool...  
+When we think of cyberattacks, we often picture dramatic breaches: a hacker bypassing firewalls, exploiting buffer overflows, smashing the stack, or injecting malicious code. However, modern adversaries frequently rely on far subtler methods that leave no obvious trace: side-channel attacks. This class of exploit involves turning seemingly innocuous system behavior into a powerful surveillance tool.  
   
 Broadly, a side-channel attack exploits unintentional information leaks that occur during a system's regular operation, possibly through timing, power usage, electromagnetic emissions, or even acoustic signals. Rather than attacking the code directly, an adversary measures how the system responds to crafted inputs and infers hidden information from these minute variations. In timing attacks, even delays of mere milliseconds or microseconds can betray the presence of secret keys, user credentials, or internal data structures. These vulnerabilities arise because many algorithms' runtimes correlate, often unknowingly, with the characteristics of their inputs. Simple operations, such as string comparisons, regular-expression matching, or cryptographic signature checks, can exhibit different execution paths depending on secret data. Additionally, in today's landscape of cloud APIs, remote authentication endpoints, and widely exposed cryptographic services, attackers can probe systems over the internet and analyze response times with astonishing precision. Thus, these inconspicuous variations become a promising target for adversaries.  
   
@@ -15,16 +15,16 @@ A robust threat model can help us understand precisely *how* and *why* a tim
 - **Measurable Timing Variations:** At the foundation of any timing attack lies the ability to observe consistent differences in how long a system takes to respond to user input. These variations can be as small as a few microseconds or as large as several milliseconds.
   - **Sources of Variation:** Early exit checks in string comparisons, backtracking in regex engines, conditional loops in cryptographic routines, or even cache misses can all introduce timing disparities.
   - **Reliable Leakage:** Noise from the operating system, network jitter, or even thread contention can obscure accurate signals. An attacker looks for patterns that persist across many measurements as signs that the delay is tied to secret-dependent code rather than random interference.
-- **High-Precision Measurement Tools:** Sophisticated tooling is essential to weed out these subtle timing differences from background noise...
+- **High-Precision Measurement Tools:** Sophisticated tooling is essential to weed out these subtle timing differences from background noise.
   - **Network Probing:** Tools like Burp Suite's Intruder or custom Python scripts using high-resolution timers can timestamp each request down to the nanosecond, which is essential for identifying actual patterns and leaks.
   - **Noise Reduction:** Techniques such as averaging hundreds of samples or filtering out outliers help ensure that the variations detected truly reflect secret-dependent behavior.
 - **Predictable Algorithmic Complexity:** For a timing attack to work, the code must exhibit a consistent relationship between input characteristics and execution time.
   - **Early Exit Loops:** An algorithm that compares two strings character by character will take proportionally longer on inputs that share longer prefixes. That extra delay directly maps to the length of the match.
   - **Cryptographic Primitives:** Some cryptographic implementations may take different execution paths (and thus require different times) depending on the bit patterns in the key. Attackers study the code or reverse-engineer the binary to map these paths in advance.
-- **Unrestricted Queries:** Timing attacks rely on statistical confidence, which generally requires many repeated probes:
+- **Unrestricted Queries:** Timing attacks rely on statistical confidence, which generally requires many repeated probes.
   - **Rate Limits and Lockouts:** A login endpoint with strict rate limiting or account lockout policies can stop repeated measurements. Conversely, an API allowing hundreds of password checks per minute becomes an ideal target.
   - **Distributed Probing:** Attackers sometimes distribute their requests across multiple IP addresses or use slow approaches to avoid detection while still accumulating the necessary sample size.
-- **Attacker Knowledge and Goals:**
+- **Attacker Knowledge and Goals**
   - **Black-Box versus Gray-Box:** Different attackers bring different levels of insight and intent to the table. For example, a black-box adversary has limited access to the system and perhaps a generic understanding of the service. In contrast, a gray-box adversary might have partial access to the source code or more direct knowledge of the implementation, thus drastically reducing the amount of guessing required.
   - **Targeted versus Opportunistic:** In a targeted scenario (such as extracting a high-value encryption key from a cryptographic server), the attacker is more likely to be motivated to spend time refining their approach. On the other hand, an attacker in an opportunistic scenario (like stealing session tokens from a poorly protected web API) would likely have a different goal.
 - **Environmental and Infrastructure Factors:** The deployment context can amplify or diminish timing leaks. For example, cloud providers often introduce greater variability that can obscure microsecond-level differences, whereas an on-premises server in a closed environment may be far more precise. Additionally, probing a local network will have less noise than hopping across the public internet to investigate a remote network.  
@@ -48,7 +48,7 @@ Attackers don't need insider knowledge; instead, they rely on straightforward re
 ### 2. Measuring Delays to Recover the Password
 With the vulnerable code identified, the attacker proceeds to quantify those microsecond differences and turn them into concrete guesses. This process typically unfolds in three phases: manual sanity checks, Burp Suite–driven automation, and a fully scripted attack to recover the secret one character at a time. 
   
-**2.1. Manual Sanity Checks with ``curl`` and ``time``**  
+**2.1. Manual Sanity Checks with** ``curl`` **and** ``time``    
 Before investing in automation, the attacker may begin with simple command-line probes to confirm the feasibility of a timing leak. They would issue a series of HTTP requests using ``curl``, each with a slightly longer password prefix, and wrap each call in the shell's ``time`` utility. This might look like:
 ```
 time curl -u [victim:A] [https://vulnerable.example.com/login]
