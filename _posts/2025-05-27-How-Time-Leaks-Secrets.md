@@ -83,7 +83,7 @@ Timing attacks often target authentication endpoints, which handle sensitive per
 Depending on the industry, timing-related exploits could violate legal frameworks such as the GDPR[^1] (if personal data is at risk), HIPAA[^2] (for healthcare systems), or PCI-DSS[^3] (for payment platforms). It is best-practice to conduct a compliance review, including consultation with legal counsel, before testing production environments, and be prepared to halt any activity that might breach applicable regulations.
 [^1]: The General Data Protection Regulation. See more [here](https://gdpr-info.eu/).
 [^2]: The Health Insurance Portability and Accountability Act. See more [here](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html).
-[^3]: The Payment Card Industry Data Security Standard. See more [here](https://www.pcisecuritystandards.org/standards/).  
+[^3]: The Payment Card Industry Data Security Standard. See more [here](https://www.pcisecuritystandards.org/standards/).
 - **Exporation vs. Exploitation**  
 Ethical practitioners engage in *exploration*: experimenting with timing techniques in controlled environments, sharing proof-of-concept code and analysis to strengthen defenses. In contrast, *exploitation* involves weaponizing these methods against live systems to steal data or disrupt services. When reporting timing vulnerabilities, concentrate on educational demonstrations in safe labs or staging environments, and refrain from publishing turnkey attack scripts that could be easily repurposed for malicious attack without proper context or safeguards.  
   
