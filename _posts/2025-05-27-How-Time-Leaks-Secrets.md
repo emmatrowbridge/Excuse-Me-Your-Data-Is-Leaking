@@ -27,10 +27,17 @@ A robust threat model can help us understand precisely *how* and *why* a tim
 - **Attacker Knowledge and Goals:**
   - **Black-Box versus Gray-Box:** Different attackers bring different levels of insight and intent to the table. For example, a black-box adversary has limited access to the system and perhaps a generic understanding of the service. In contrast, a gray-box adversary might have partial access to the source code or more direct knowledge of the implementation, thus drastically reducing the amount of guessing required.
   - **Targeted versus Opportunistic:** In a targeted scenario (such as extracting a high-value encryption key from a cryptographic server), the attacker is more likely to be motivated to spend time refining their approach. On the other hand, an attacker in an opportunistic scenario (like stealing session tokens from a poorly protected web API) would likely have a different goal.
-- **Environmental and Infrastructure Factors:** The deployment context can amplify or diminish timing leaks. For example, cloud providers often introduce greater variability that can obscure microsecond-level differences, whereas an on-premises server in a closed environment may be far more precise. Additionally, probing a local network will have less noise than hopping across the public internet to investigate a remote network.
-
-
+- **Environmental and Infrastructure Factors:** The deployment context can amplify or diminish timing leaks. For example, cloud providers often introduce greater variability that can obscure microsecond-level differences, whereas an on-premises server in a closed environment may be far more precise. Additionally, probing a local network will have less noise than hopping across the public internet to investigate a remote network.  
+  
 # Exploiting Response Time to Leak a Password (A Demo)
+Now that you're familiar with side-channel attack, let's walk through a concreate example that highlight how even a simple string comparision can become a timing leak— and how an attacker can exploit it to recover a password, one character at a time.
+### 1. The Vulnerable Function
+
+
+
+
+
+
 Imagine a web service that validates login attempts by comparing user-supplied passwords using Python's ``==``. Here is what the backend may look like:
 ```
 def validate_login(inputed_password):
