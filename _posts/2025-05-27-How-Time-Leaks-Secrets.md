@@ -112,14 +112,14 @@ Timing side-channel attacks reveal how even the most minor operational quirks, s
   
 [NIST: CVE-2017-5361](https://nvd.nist.gov/vuln/detail/CVE-2017-5361)  
   
-<iframe
-  width="560" height="315"
-  src="https://www.youtube-nocookie.com/embed/2-zQp26nbY8"
-  frameborder="25"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen>
-</iframe>  
-  
-  
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 2rem;">
+  <iframe
+    src="https://www.youtube.com/embed/2-zQp26nbY8"
+    style="position: absolute; top:0; left:0; width:100%; height:100%; border:0;"
+    loading="lazy"
+    allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>   
   
 **Footnotes**  
