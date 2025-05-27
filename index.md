@@ -1,4 +1,4 @@
 ---
-404: Ethics Not Found: Welcome to my blog
+The Ethics of Exploit: Welcome to my blog
 ---
 
