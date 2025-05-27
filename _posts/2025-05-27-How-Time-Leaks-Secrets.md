@@ -73,23 +73,20 @@ elapsed = time.perf_counter_ns() - start
   
 Ultimately, by progressing from manual timing checks to GUI-driven automation and then to a complete scripting solution, the attacker transforms minute, otherwise invisible timing differences into a reliable method for password extraction, demonstrating the real-world feasibility of timing side-channel exploits.  
   
-
-
-
-
-
-
-
-
 # Ethical and Legal Considerations
-While timing attacks are elegant from a technical perspective, they raise challenging questions about intent, consent, and consequence.
-## Ethics
-- **Is it ethical to measure performance differences?** In isolation, measurement is passive. However, when done to infer private data without consent, it veers toward unethical surveillance.
-- **Should timing side-channel attacks be considered a form of hacking?** Timing attacks do not modify data or insert code. Yet, they utilize system design to gain unauthorized information.
-- **Do developers have a duty to guard against these attacks?** Absolutely. Knowing that timing leakage is possible, especially in senstive contexts (e.g., logins), there is an ethical obligation to mitigate it.
-## Legal
-Ultimately, intent matters. An academic demonstrating a flaw in good faith should not be treated the same as a malicious actor exfiltrating user data. However, the legal system often lags behind technical nuance.
-
+Timing side-channel research sits at the intersection of academic inquiry, responsible security testing, and legal constraint. Before getting started on any real-world timing experiments, researchers and penetration testers must carefully navigate these ethical and legal landscapes.  
+- **Informed Consent and Authorization**  
+Performing timing measurements against live systems (especially those you do not own) can easily cross into unauthorized access. Always obtain explicit, documented permission before probing an application. Even seemingly innocuous timing tests can trigger intrusion-detection systems or violate terms of service.  
+- **Data Privacy and Disclosure**  
+Timing attacks often target authentication endpoints, which handle sensitive personal information. Ensure that any data observed or inferred remains strictly confidential. When reporting vulnerabilities, follow coordinated disclosure practices: give the vendor reasonable time to implement fixes before going public, and share only the minimum necessary technical detail to demonstrate the issue.  
+- **Regulatory Compliance**  
+Depending on the industry, timing-related exploits could violate legal frameworks such as the GDPR[^1] (if personal data is at risk), HIPAA[^2] (for healthcare systems), or PCI-DSS[^3] (for payment platforms). It is best-practice to conduct a compliance review, including consultation with legal counsel, before testing production environments, and be prepared to halt any activity that might breach applicable regulations.
+[^1]: The General Data Protection Regulation. See more [here](https://gdpr-info.eu/).
+[^2]: The Health Insurance Portability and Accountability Act. See more [here](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html).
+[^3]: The Payment Card Industry Data Security Standard. See more [here](https://www.pcisecuritystandards.org/standards/).  
+- **Exporation vs. Exploitation**  
+Ethical practitioners engage in *exploration*: experimenting with timing techniques in controlled environments, sharing proof-of-concept code and analysis to strengthen defenses. In contrast, *exploitation* involves weaponizing these methods against live systems to steal data or disrupt services. When reporting timing vulnerabilities, concentrate on educational demonstrations in safe labs or staging environments, and refrain from publishing turnkey attack scripts that could be easily repurposed for malicious attack without proper context or safeguards.  
+  
 # Mitigations and Best Practices
 To defend against timing side channels, developers can:
 - Use constant-time comparision functions.
