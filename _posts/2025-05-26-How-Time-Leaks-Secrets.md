@@ -1,12 +1,23 @@
 ---
 title: "How Time Leaks Secrets"
-date: 2025-05-26
+date: 2025-05-27
 ---
 # Introduction: Timing as a Threat
-In security, we often imagine attackers breaking through walls—finding a vulnerability, exploiting it, and gaining access. But many of the most devastating modern attacks don’t break walls; they listen through them. Timing side-channel attacks are a class of exploits where attackers infer sensitive information by measuring how long it takes a system to respond. When algorithmic complexity varies with input, even imperceptibly, it can inadvertently act as a covert communication channel—a channel that leaks secrets, one millisecond at a time.
+Often, the image of an attacker evokes scenes of forceful intrusion: breaking encryption schemes, exploiting bugs, or manipulating code. However, today's threats tend to be much subtler yet equally devastating.  
+Timing side-channel attacks are one example of this. This class of exploits involves turning innocent-loooking differences in execution time into a powerful surveillance tool. 
+
+
+
+Timing side-channel attacks are a class of exploits where attackers infer sensitive information by measuring how long it takes a system to respond. When algorithmic complexity varies with input, even imperceptibly, it can inadvertently act as a covert communication channel—a channel that leaks secrets, one millisecond at a time.
 These attacks do not require injecting code or defeating encryption directly. Instead, they weaponize observable delay. Whether comparing two strings, matching a pattern in a search query, or validating a digital signature, the time it takes to process input can vary in predictable ways. And in a world where cloud APIs, login forms, and cryptographic operations are exposed online, these variations become a rich target for adversaries.
 This post explores how algorithmic complexity interacts with timing side channels. We’ll demonstrate a live exploit, walk through the code mechanics, and—perhaps most importantly—examine the legal and ethical dimensions of exploiting time.
+
 # The Threat Model
+A timing side-channel attack involves observing system response times to gain insights into sensitive data. For such an attack to succeed, certain conditions must be precisely evaluated:
+- **Observable Timing Differences:** Timing differences must be reliably measurable as even minute disparities in response time (down to microseconds) can leak sensitive information. Systems often unintentionally create these measurable timing differences due to algorithmic inefficiencies or coding practices and attackers depend on these variations to carry out their exploit.
+- **Precise Timing Measurement:** Timing side-channel attacks require specialized tools for precise timing measurements. High-precision network monitoring software (think Burp Suite or specialized Python scripts using high-resolution timers) are essential for accurately measuring subtle timing variations and filtering out network noise to reveal significant patterns.
+- **Predictable Complexity Patterns:** The algorithmic must, of course, exhibit predictable complexity that corresponds directly to sensitive input data. For instance, algorithms that exit early upon mismatch inherently leak timing information. Understanding these predictable patterns allows attackers to effectively exploit timing leaks.
+- **Multiple Queries:** A successful timing side-channel attack generally requires multiple interations to confirm guesses and rule out randomness or anomalies. In turn, attackers will more likely target APIs or login systems that do not sufficiently limit the frequency of queries, thus enabling a systematic probing of sensitive information.
 
 # Exploiting Response Time to Leak a Password (A Demo)
 Imagine a web service that validates login attempts by comparing user-supplied passwords using Python's ``==``. Here is what the backend may look like:
