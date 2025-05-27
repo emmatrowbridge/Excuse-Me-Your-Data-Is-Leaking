@@ -78,14 +78,14 @@ Timing side-channel research sits at the intersection of academic inquiry, respo
 - **Informed Consent and Authorization**  
 Performing timing measurements against live systems (especially those you do not own) can easily cross into unauthorized access. Always obtain explicit, documented permission before probing an application. Even seemingly innocuous timing tests can trigger intrusion-detection systems or violate terms of service.  
 - **Data Privacy and Disclosure**  
-Timing attacks often target authentication endpoints, which handle sensitive personal information. Ensure that any data observed or inferred remains strictly confidential. When reporting vulnerabilities, follow coordinated disclosure practices: give the vendor reasonable time to implement fixes before going public, and share only the minimum necessary technical detail to demonstrate the issue.  
+Timing attacks often target authentication endpoints, which handle sensitive personal information. Ensure that any data observed or inferred remains strictly confidential. When reporting vulnerabilities, follow coordinated disclosure practices: give the vendor reasonable time to implement fixes before going public, and share only the minimum necessary technical detail to demonstrate the issue.
+- **Exporation vs. Exploitation**  
+Ethical practitioners engage in *exploration*: experimenting with timing techniques in controlled environments, sharing proof-of-concept code and analysis to strengthen defenses. In contrast, *exploitation* involves weaponizing these methods against live systems to steal data or disrupt services. When reporting timing vulnerabilities, concentrate on educational demonstrations in safe labs or staging environments, and refrain from publishing turnkey attack scripts that could be easily repurposed for malicious attack without proper context or safeguards.   
 - **Regulatory Compliance**  
 Depending on the industry, timing-related exploits could violate legal frameworks such as the GDPR[^1] (if personal data is at risk), HIPAA[^2] (for healthcare systems), or PCI-DSS[^3] (for payment platforms). It is best-practice to conduct a compliance review, including consultation with legal counsel, before testing production environments, and be prepared to halt any activity that might breach applicable regulations.
 [^1]: The General Data Protection Regulation. See more [here](https://gdpr-info.eu/).
 [^2]: The Health Insurance Portability and Accountability Act. See more [here](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html).
 [^3]: The Payment Card Industry Data Security Standard. See more [here](https://www.pcisecuritystandards.org/standards/).
-- **Exporation vs. Exploitation**  
-Ethical practitioners engage in *exploration*: experimenting with timing techniques in controlled environments, sharing proof-of-concept code and analysis to strengthen defenses. In contrast, *exploitation* involves weaponizing these methods against live systems to steal data or disrupt services. When reporting timing vulnerabilities, concentrate on educational demonstrations in safe labs or staging environments, and refrain from publishing turnkey attack scripts that could be easily repurposed for malicious attack without proper context or safeguards.  
   
 # Mitigations and Best Practices
 To defend against timing side channels, developers can:
