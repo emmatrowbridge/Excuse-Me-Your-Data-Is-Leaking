@@ -20,7 +20,7 @@ A robust threat model can help us understand precisely *how* and *why* a tim
   - **Noise Reduction:** Techniques such as averaging hundreds of samples or filtering out outliers help ensure that the variations detected truly reflect secret-dependent behavior.
 - **Predictable Algorithmic Complexity:** For a timing attack to work, the code must exhibit a consistent relationship between input characteristics and execution time.
   - **Early Exit Loops:** An algorithm that compares two strings character by character will take proportionally longer on inputs that share longer prefixes. That extra delay directly maps to the length of the match.
-  - **Cryptographic Primitives:** Some cryptographic implementations may take different execution paths (and thus time) depending on bit patterns in the key. Attackers study the code or reverse-engineer the binary to map these paths in advance.
+  - **Cryptographic Primitives:** Some cryptographic implementations may take different execution paths (and thus require different times) depending on the bit patterns in the key. Attackers study the code or reverse-engineer the binary to map these paths in advance.
 - **Unrestricted Queries:** Timing attacks rely on statistical confidence, which generally requires many repeated probes:
   - **Rate Limits and Lockouts:** A login endpoint with strict rate limiting or account lockout policies can stop repeated measurements. Conversely, an API allowing hundreds of password checks per minute becomes an ideal target.
   - **Distributed Probing:** Attackers sometimes distribute their requests across multiple IP addresses or use slow approaches to avoid detection while still accumulating the necessary sample size.
