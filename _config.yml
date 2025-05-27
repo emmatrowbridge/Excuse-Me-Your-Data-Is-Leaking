@@ -1,3 +1,9 @@
 theme: minima
 title: The Ethics of Exploit
 author: Emma Trowbridge
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  footnote_backlink: "↩"
+  footnote_nr: 1
