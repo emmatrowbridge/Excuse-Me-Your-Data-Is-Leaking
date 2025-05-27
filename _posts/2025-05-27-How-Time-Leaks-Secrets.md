@@ -45,8 +45,33 @@ At first glance, this looks harmless, but in reality, this program is a key cand
 ### 1.5. But Wait… How Does the Attacker Even Know This Exists?
 Attackers don't need insider knowledge; instead, they rely on straightforward reconnaissance to pinpoint vulnerable comparisons. The attacker will likely start by locating a site's password-validation logic by exploring the application's login form or API documentation and searching for endpoints such as ``POST /login``. Submitting a few blatantly invalid credentials and receiving an error message such as “401 Unauthorized” might confirm they have hit the right spot. Further, clues in server banners, default error pages, or even the names of cookies and CSRF tokens can hint toward the backend framework. With that lead, the attacker may perform a handful of manual tests. For example, sending ``"A"``, ``"AA"``, and ``"AAA"`` as passwords wrapped in a simple time curl command. Even amidst normal network noise, if they notice a slight trend that longer prefixes yield marginally longer response times, they’re ready to dive into systematic timing measurement to extract the full password, character by character.
   
-### 2. Measuring Delays
+### 2. Measuring Delays to Recover the Password
+With the vulnerable comparison identified, the attacker proceeds to quantify those microsecond differences and turn them into concrete guesses. This process typically unfolds in three phases: manual sanity checks, Burp Suite–driven automation, and a fully scripted attack to recover the secret one character at a time.  
+**2.1. Manual Sanity Checks with ``curl`` and ``time``**  
+Before investing in automation, the attacker begins with simple command-line probes to confirm the feasibility of a timing leak. They issue a series of HTTP requests using ``curl``, each with a slightly longer password prefix, and wrap each call in the shell’s ``time`` utility. This might look like:
+```
+time curl -u [victim:A] [https://vulnerable.example.com/login]
+time curl -u [victim:AA] [https://vulnerable.example.com/login]
+time curl -u [victim:AAA] [https://vulnerable.example.com/login]
+```
+By running each test 10–20 times and averaging the real (wall-clock) times, the attacker cares to observe a consistent increase: requests with "AA" take fractionally longer than those with "A", and "AAA" takes longer still. Although there may be an interference of network noise, the persistence of this trend across repeated trials confirms that each correctly matched character adds a measurable delay which is an essential prerequisite for the next, more scalable stages of the exploit.  
+**2.2. Scaling Up with Burp Suite**  
+Having verified the leak by hand, the attacker could then turn to Burp Suite’s Intruder tool to streamline and visualize the process. First, they would intercept a legitimate login request in Burp’s Proxy and send it to Intruder. Then, in the Repeater tab, they would use a custom character set of letters, digits, and symbols, they would send a payload with each character individually and view the Response Time of the request. Once the attacker finds the character with the significantly longest response time, that character becomes the confirmed next byte of the password, and the attacker updates the payload with that character before rerunning the intruder and iterating until the full secret emerges. This can take a long time to iterate through though, which is why an attack might then turn to automation.  
+**2.3. Full Automation with a Custom Script**  
+Leveraging Python's ``time.perf_counter_ns()`` an attacker can write a script that measures round-trip times with nanosecond resolution. Each iteration builds a guess by combining the known prefix, a candidate character, and padding (to keep total request size constant), then sends the request and records the elapsed time. By averaging multiple samples per guess, the script filters out random network and server noise:  
+```
+URL = https://vulnerable.example.com/login
 
+start = time.perf_counter_ns()
+requests.post(URL, json={"username":"victim","password":guess})
+elapsed = time.perf_counter_ns() - start
+```
+> [!NOTE]
+> Python's ``time.perf_counter_ns()`` is a function that gives the integer value of time in nanoseconds.  
+  
+After cycling through every possible character, the script selects the one with the highest average elapsed time as the next correct symbol. This loop repeats until the entire password is reconstructed. The result: a hands-off, high-throughput attack that can recover any string-comparison-based secret in minutes rather than days.  
+
+Ultimately, by progressing from manual timing checks to GUI-driven automation and then to a full scripting solution, the attacker transforms minute, otherwise invisible timing differences into a reliable method for password extraction, demonstrating the real-world feasibility of timing side-channel exploits.
 
 
 
