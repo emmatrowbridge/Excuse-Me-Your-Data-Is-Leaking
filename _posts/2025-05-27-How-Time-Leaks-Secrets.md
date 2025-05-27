@@ -110,12 +110,12 @@ Timing side-channel attacks reveal how even the most minor operational quirks, s
   
 [Intel: Guidelines for Mitigating Timing Side Channels Against Cryptographic Implementations](https://www.intel.com/content/www/us/en/developer/articles/technical/software-security-guidance/secure-coding/mitigate-timing-side-channel-crypto-implementation.html)  
   
-[CVE-2017-5361](https://nvd.nist.gov/vuln/detail/CVE-2017-5361)  
+[NIST: CVE-2017-5361](https://nvd.nist.gov/vuln/detail/CVE-2017-5361)  
   
 <iframe
   width="560" height="315"
   src="https://www.youtube-nocookie.com/embed/2-zQp26nbY8"
-  frameborder="5"
+  frameborder="25"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen>
 </iframe>  
