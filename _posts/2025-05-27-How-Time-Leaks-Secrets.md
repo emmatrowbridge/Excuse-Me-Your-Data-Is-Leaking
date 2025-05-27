@@ -30,22 +30,32 @@ A robust threat model can help us understand precisely *how* and *why* a tim
 - **Environmental and Infrastructure Factors:** The deployment context can amplify or diminish timing leaks. For example, cloud providers often introduce greater variability that can obscure microsecond-level differences, whereas an on-premises server in a closed environment may be far more precise. Additionally, probing a local network will have less noise than hopping across the public internet to investigate a remote network.  
   
 # Exploiting Response Time to Leak a Password (A Demo)
-Now that you're familiar with side-channel attack, let's walk through a concreate example that highlight how even a simple string comparision can become a timing leak— and how an attacker can exploit it to recover a password, one character at a time.
+Now that you're familiar with side-channel attack, let's walk through a concreate example that highlights how even a simple string comparision can become a timing leak, and how an attacker can exploit it to recover a password, one character at a time.  
+  
 ### 1. The Vulnerable Function
-
-
-
-
-
-
-Imagine a web service that validates login attempts by comparing user-supplied passwords using Python's ``==``. Here is what the backend may look like:
+Suppose a web server validates passwords like this:
 ```
-def validate_login(inputed_password):
-  if inputed_password == "correct_password123"
+def validate_password(input_password):
+  if input_password == "CorrectPasswordExample123!"
     return True
   return False
 ```
-What's wrong with this? Well, this comparision operates left-to-right and will exit early on a mismatch. Let's say you send a request with ``c``, then ``co``, then ``cor``, the system will take slightly (milliseconds) longer on each guess if those characters are correct. Thus, an attack can measure these delays with enough precision to extract the correct passwords one character at a time.
+At first glance, this looks harmless, but in reality this program is a key candidate for a timing leak. Why? Python's ``==`` operator compares two strings character by character and returns as soon as it finds a mismatch. Thus, each additional correct character in the guess forces one more comparison step (and a tiny, microsecond delay) before the function returns. Over many measurements, these delays add up into a clear timing signal.
+  
+### 1.5. But Wait… How Does the Attacker Even Know This Exists?
+Attackers don't need insider knowledge; rather, they rely on straightforward reconnaissance to pinpoint vulnerable comparisons. The attacker will likely start by locating a site's password-validation logic through exploring the application’s login form or API documentation, hunting for endpoints like ``POST /login``. Submitting a few blatantly invalid credentials and receiving an error message such as “401 Unauthorized” might confirm they have hit the right spot. Further, clues in server banners, default error pages, or even the names of cookies and CSRF tokens can hint toward the backend framework.  
+With that lead, the attacker may perform a handful of manual tests. For example, sending ``"A"``, ``"AA"``, and ``"AAA"`` as passwords wrapped in a simple time curl command. Even amidst normal network noise, if they notice a slight trend that longer prefixes yield marginally longer response times, they’re ready to dive into systematic timing measurement to extract the full password, character by character.
+  
+### 2. Measuring Delays
+
+
+
+
+
+
+
+
+
 
 # Ethical and Legal Considerations
 While timing attacks are elegant from a technical perspective, they raise challenging questions about intent, consent, and consequence.
