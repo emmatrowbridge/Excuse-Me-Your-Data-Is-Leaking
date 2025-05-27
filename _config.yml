@@ -1,4 +1,6 @@
-theme: minima
+remote_theme: pages-themes/cayman@v0.3.0
+plugins:
+  - jekyll-remote-theme
 title: The Ethics of Exploit
 author: Emma Trowbridge
 
