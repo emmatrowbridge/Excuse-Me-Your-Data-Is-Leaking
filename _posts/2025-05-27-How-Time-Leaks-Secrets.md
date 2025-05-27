@@ -115,10 +115,10 @@ Timing side-channel attacks reveal how even the most minor operational quirks, s
 <iframe
   width="560" height="315"
   src="https://www.youtube-nocookie.com/embed/2-zQp26nbY8"
-  frameborder="0"
+  frameborder="5"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen>
-</iframe>
+</iframe>  
   
   
   
