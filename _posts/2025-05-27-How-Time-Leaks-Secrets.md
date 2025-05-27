@@ -98,10 +98,9 @@ Servers should enforce per-account and per-IP rate limits on login attempts and 
 - **Uniform Error Messages and Responses**  
 Developers must ensure that both successful and failed authentication attempts return identical status codes, headers, and payloads. Any variation, even in error descriptions, can provide additional side channels for attackers to correlate with timing data.
 - **Continuous Monitoring and Testing**  
-Hosts should incorporate timing-side-channel checks into their regular security testing regimen. They can use automated vulnerability scanners or in-house scripts to periodically verify that critical comparison routines remain constant-time and rate-limited under real-world load.
-
+Hosts should incorporate timing-side-channel checks into their regular security testing regimen. They can use automated vulnerability scanners or in-house scripts to periodically verify that critical comparison routines remain constant-time and rate-limited under real-world load.  
+  
+# Closing Thoughts  
+Timing side-channel attacks reveal how the smallest operational quirks, here it's mere microseconds of delay, can become a powerful surveillance tool in the wrong hands. By walking through the attacker's process, from identifying a vulnerable string comparison and performing manual probes, to scaling with Burp Suite and full automation, we have seen just how straightforward it is to turn minute timing differences into a full password recovery. We also saw that defending against these covert threats demands both vigilance and layered countermeasures: adopt constant-time comparisons, inject controlled noise, enforce strict rate limits, and maintain uniform response patterns. Coupled with ethical restraint and proper authorization, these practices ensure that your systems remain blurred to would-be eavesdroppers, keeping every nanosecond tick of your application safe from prying eyes.
+  
 # Further Reading
-
-# Closing Thoughts
-Timing side channels challenge a foundational assumption in computing: that internal execution is invisible. But time, like light or heat, can leak. As defenders, developers, and scholars, we must consider not just what our code does, but how it ehaves under observation.
-Algorithmic elegance is no excuse for ethical blind spots. When milliseconds can betray secrets, it is our responsibility to ensure they don't.
