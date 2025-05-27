@@ -3,14 +3,12 @@ title: "How Time Leaks Secrets"
 date: 2025-05-27
 ---
 # Introduction: Timing as a Threat
-Often, the image of an attacker evokes scenes of forceful intrusion: breaking encryption schemes, exploiting bugs, or manipulating code. However, today's threats tend to be much subtler yet equally devastating.  
-Timing side-channel attacks are one example of this. This class of exploits involves turning innocent-loooking differences in execution time into a powerful surveillance tool. 
-
-
-
-Timing side-channel attacks are a class of exploits where attackers infer sensitive information by measuring how long it takes a system to respond. When algorithmic complexity varies with input, even imperceptibly, it can inadvertently act as a covert communication channel—a channel that leaks secrets, one millisecond at a time.
-These attacks do not require injecting code or defeating encryption directly. Instead, they weaponize observable delay. Whether comparing two strings, matching a pattern in a search query, or validating a digital signature, the time it takes to process input can vary in predictable ways. And in a world where cloud APIs, login forms, and cryptographic operations are exposed online, these variations become a rich target for adversaries.
-This post explores how algorithmic complexity interacts with timing side channels. We’ll demonstrate a live exploit, walk through the code mechanics, and—perhaps most importantly—examine the legal and ethical dimensions of exploiting time.
+When we think of cyberattacks, we often picture dramatic breaches: a hacker bypassing firewalls, exploiting buffer offerflows, smashing the stack, or injecting malicious code. However, modern adversaries often rely on far subtler methods that leave no obvious trace: side-channel attacks. This class of exploit involves turning seemingly innocuous system behavior into a powerful surveillance tool...  
+  
+Broadly, a side-channel attack capitalizes on unintentional information leaks produced during a system’s normal operation (whether through timing, power usage, electromagnetic emissions, or even acoustic signals). Rather than attacking the code directly, an adversary measures how the system responds to crafted inputs and infers hidden information from these minute variations. In timing attacks, even delays of mere milliseconds or microseconds can betray the presence of secret keys, user credentials, or internal data structures.  
+These vulnerabilities arise because many algorithms' runtimes correlate, often unknowingly, with the characteristics of their inputs. Simple operations like string comparisons, regular-expression matching, or cryptographic signature checks can exhibit different execution paths depending on secret data. Additionally, in today’s landscape of cloud APIs, remote authentication endpoints, and widely exposed cryptographic services, attackers can probe systems over the internet and analyze response times with astonishing precision. Thus, these inconspicuous variations become a promising target for adversaries.  
+  
+In this post, I will explore how timing side-channel attacks exploit algorithmic complexity to leak sensitive information. You will see a step-by-step demonstration of a password-leak scenario, learn about the ethical and legal considerations surrounding such attacks, and discover proven techniques for mitigating these covert threats. By the end, you will understand why even the smallest delay matters— and how to defend against an adversary who is listening to every tick of your system’s clock.
 
 # The Threat Model
 A timing side-channel attack involves observing system response times to gain insights into sensitive data. For such an attack to succeed, certain conditions must be precisely evaluated:
