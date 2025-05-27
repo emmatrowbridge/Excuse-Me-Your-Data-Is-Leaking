@@ -121,5 +121,6 @@ Timing side-channel attacks reveal how even the most minor operational quirks, s
     allowfullscreen>
   </iframe>
 </div>   
-  
+<br /><br />
+<br /><br />
 **Footnotes**  
