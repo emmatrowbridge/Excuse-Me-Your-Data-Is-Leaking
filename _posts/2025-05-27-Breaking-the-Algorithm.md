@@ -1,5 +1,5 @@
 ---
-title: "Breaking the Algorithm"
+title: "Exposed by Patterns"
 date: 2025-05-27
 ---
 # Introduction: Exploiting Complexity to Deny Service
