@@ -4,7 +4,7 @@ date: 2025-05-27
 ---
 # Introduction: Information Disclosure via Metadata
 Not all leaks require hacking. Sometimes, the most sensitive information is embedded in the very files we share every day—documents, photos, PDFs, and spreadsheets. Metadata—data about data—can silently expose who created a file, where it was made, what software was used, and even internal revision histories.
-While metadata often serves useful purposes (e.g., organizing files, enabling collaboration, or maintaining authorship), it can also lead to serious privacy and security breaches. A PDF submitted to a court may reveal redacted text with a simple copy-paste. A JPEG posted online might include GPS coordinates of a crime scene. An academic paper might leak the names of reviewers hidden in its comment history.
+While metadata often serves useful purposes (e.g., organizing files, enabling collaboration, or maintaining authorship), it can also lead to serious privacy and security breaches. A PDF submitted to a court may reveal redacted text with a simple copy-paste. A JPEG posted online might include GPS coordinates of a crime scene. An academic paper m ight leak the names of reviewers hidden in its comment history.
 This post explores how metadata-based information disclosure works, how it's exploited, and why ethical handling of digital artifacts requires attention not just to content—but to context.
 
 # The Threat Model
