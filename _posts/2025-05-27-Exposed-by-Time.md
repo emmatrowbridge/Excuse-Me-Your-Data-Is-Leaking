@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How Time Leaks Secrets"
+title: "Exposed by Time"
 date: 2025-05-27
 ---
 # Introduction: Timing as a Threat
