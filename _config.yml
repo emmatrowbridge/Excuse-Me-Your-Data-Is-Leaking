@@ -1,6 +1,8 @@
 theme: minima
 title: Excuse Me Your Data Is Leaking
+description: How hidden cracks spill your secret
 author: Emma Trowbridge
+logo: "/assets/logo.png"
 
 markdown: kramdown
 kramdown:
