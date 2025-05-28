@@ -1,8 +1,8 @@
 theme: minima
 logo: "/assets/logo.png"
-title: 
-author: 
-description: 
+title: ""
+author: ""
+description: ""
 
 markdown: kramdown
 kramdown:
