@@ -1,5 +1,5 @@
 ---
-title: "Hidden in Plain Sight"
+title: "Exposed by Metadata"
 date: 2025-05-27
 ---
 # Introduction: Information Disclosure via Metadata
