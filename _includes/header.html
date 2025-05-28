@@ -1,8 +1,8 @@
 <header class="site-header" role="banner">
-  <div class="wrapper" style="text-align: center; padding-bottom: 20px;">
+  <div class="wrapper" style="text-align: left; padding: 20px;">
     <a class="site-title" href="{{ '/' | relative_url }}">
       {% if site.logo %}
-        <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}" style="height:100px;">
+        <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}" style="height: 100px; display: block; margin-bottom: 10px;">
       {% endif %}
     </a>
 
@@ -18,7 +18,7 @@
       By {{ site.author }}
     </p>
 
-    <nav class="site-nav">
+    <nav class="site-nav" style="margin-top: 15px;">
       <input type="checkbox" id="nav-trigger" class="nav-trigger" />
       <label for="nav-trigger">
         <span class="menu-icon">
