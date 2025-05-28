@@ -1,41 +1,22 @@
 <header class="site-header" role="banner">
-  <div class="wrapper" style="text-align: left; padding: 20px;">
-    <a class="site-title" href="{{ '/' | relative_url }}">
-      {% if site.logo %}
+  <div class="wrapper" style="display: flex; align-items: center; gap: 20px; padding: 20px;">
+    
+    {% if site.logo %}
+      <a href="{{ '/' | relative_url }}">
         <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}"
-             style="height: 100px; display: block; margin-bottom: 20px;">
-      {% endif %}
-    </a>
+             style="height: 100px; flex-shrink: 0;">
+      </a>
+    {% endif %}
 
-    <h1 style="margin: 0 0 5px 0;">
-      {{ site.title }}
-    </h1>
+    <div class="site-text">
+      <h1 style="margin: 0 0 5px 0;">{{ site.title }}</h1>
+      <p class="site-description" style="font-style: italic; font-size: 1.1em; margin: 0;">
+        {{ site.description }}
+      </p>
+      <p class="site-author" style="font-style: italic; font-size: 0.8em; color: #666; margin-top: 5px;">
+        By {{ site.author }}
+      </p>
+    </div>
 
-    <p class="site-description" style="font-style: italic; font-size: 1.1em; margin: 0;">
-      {{ site.description }}
-    </p>
-
-    <p class="site-author" style="font-style: italic; font-size: 0.8em; color: #666; margin-top: 5px;">
-      By {{ site.author }}
-    </p>
-
-    <nav class="site-nav" style="margin-top: 15px;">
-      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-      <label for="nav-trigger">
-        <span class="menu-icon">
-          <svg viewBox="0 0 18 15" width="18px" height="15px">
-            <path fill="#424242" d="M18,1 L18,3..."></path>
-          </svg>
-        </span>
-      </label>
-
-      <div class="trigger">
-        {% for my_page in site.pages %}
-          {% if my_page.title %}
-            <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title }}</a>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </nav>
   </div>
 </header>
