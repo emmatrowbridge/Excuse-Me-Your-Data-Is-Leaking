@@ -1,4 +1,4 @@
 ---
-Excuse Me Your Data Is Leaking: How invisible leaks spill your secrets
+Excuse Me Your Data Is Leaking: How hidden cracks spill your secrets
 ---
 
