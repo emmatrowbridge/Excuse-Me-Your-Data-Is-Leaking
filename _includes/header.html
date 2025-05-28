@@ -1,0 +1,31 @@
+<header class="site-header" role="banner">
+  <div class="wrapper">
+    <a class="site-title" href="{{ '/' | relative_url }}">
+      {% if site.logo %}
+        <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}" style="height:40px; vertical-align:middle;">
+      {% endif %}
+      {{ site.title }}
+    </a>
+    <p class="site-description">{{ site.description }}</p>
+    <p class="site-author">By {{ site.author }}</p>
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="..."></path>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger">
+        {% for my_page in site.pages %}
+          {% if my_page.title %}
+          <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </nav>
+  </div>
+</header>
