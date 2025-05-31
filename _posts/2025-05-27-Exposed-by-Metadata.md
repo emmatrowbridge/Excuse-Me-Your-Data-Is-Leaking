@@ -87,6 +87,7 @@ By approaching file sharing with awareness, enforcing metadata hygiene, and equi
 
 <br /><br />
 *Footnotes* 
+  
 <img
   src="https://raw.githubusercontent.com/emmatrowbridge/Excuse-Me-Your-Data-Is-Leaking/main/assets/madison.png"
   alt="Madison"
