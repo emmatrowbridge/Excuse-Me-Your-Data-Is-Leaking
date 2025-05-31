@@ -87,10 +87,10 @@ By approaching file sharing with awareness, enforcing metadata hygiene, and equi
 
 <br /><br />
 *Footnotes* 
-<iframe
-  width="560" height="315"
+<img
   src="https://raw.githubusercontent.com/emmatrowbridge/Excuse-Me-Your-Data-Is-Leaking/main/assets/madison.png"
-  frameborder="0"
-  allowfullscreen>
-</iframe>  
+  alt="Madison"
+  width="250"
+  height="250"  
+/>
 [^1]: Said image of Madison, converted to a png to protect my metadata!
