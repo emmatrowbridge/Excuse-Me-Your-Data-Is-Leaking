@@ -52,19 +52,20 @@ This is not theoretical. It is a concrete demonstration of how easily sensitive 
 <br /><br />
 # Ethical and Legal Considerations
 Metadata analysis exists at a complex intersection of digital forensics, privacy law, and professional ethics. Although metadata is technically accessible and legally extractable in many contexts, its use and misuse raise substantial questions about consent, intent, and responsibility. As with many areas of cybersecurity, the legality of an action does not always determine its ethical standing.  
-## Consent and Responsibility  
+### Consent and Responsibility  
 From an ethical standpoint, the question is not simply, *can* we extract metadata, but *should* we? Metadata is typically included without the sender's knowledge or intent. If a journalist, analyst, or even an adversary receives a file with revealing metadata, are they justified in using it? Even if no laws are broken, metadata extraction can violate expectations of privacy and autonomy. In cases involving whistleblowers, confidential informants, or vulnerable communities, metadata can even put lives at risk.  
   
 Who, then, bears responsibility? Is it the user who shared a file without awareness of what it contained? The software developer who enabled metadata by default? The recipient who knowingly used that information for gain? 
   
 Ethically responsible behavior in these contexts requires recognizing metadata as sensitive information by default and treating it with the same care.  
-## Regulatory Landscape and Legal Risk
+### Regulatory Landscape and Legal Risk
 Several data protection and compliance frameworks treat metadata as a regulated category of personal or sensitive data.  
 - **GDPR (European Union):** Metadata such as names, IP addresses, and geolocation qualifies as personal data. If leaked, this may trigger mandatory breach notification requirements and fines.  
 - **HIPAA (USA):** In healthcare settings, metadata that ties a patient to a document, even indirectly, can constitute a violation if not redacted before sharing.  
 - **FOIA (USA):** Government agencies must *retain* metadata on public record.  
-Courts have also acknowledged metadata as a form of evidence. It is admissible in litigation and is frequently used to authenticate documents, establish authorship, or challenge timelines. Conversely, failure to preserve or sanitize metadata has led to sanctions, case dismissals, and reputational harm.  
-## Organizational Exposure
+Courts have also acknowledged metadata as a form of evidence. It is admissible in litigation and is frequently used to authenticate documents, establish authorship, or challenge timelines. Conversely, failure to preserve or sanitize metadata has led to sanctions, case dismissals, and reputational harm.
+
+### Organizational Exposure
 Improper handling of metadata can result in legal liability for data breaches, unintentional exposure of trade secrets or proprietary tools, or even embarrassment or reputational damage from internal document leaks. Real-world incidents, ranging from leaked policy documents with author metadata to photos revealing classified locations, underscore the seriousness of these risks. Cybersecurity professionals, developers, and organizational leaders share responsibility for mitigating this class of vulnerability. This includes implementing policies, training staff, and regularly verifying that metadata is not present before sharing files externally.
 <br /><br />
 # Mitigations and Best Practices  
