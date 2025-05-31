@@ -87,6 +87,5 @@ By approaching file sharing with awareness, enforcing metadata hygiene, and equi
 
 <br /><br />
 *Footnotes*  
-  
-![Madison](assets/madison.png)
+![Madison]([assets/madison.png](https://github.com/emmatrowbridge/Excuse-Me-Your-Data-Is-Leaking/blob/8d259ad09487d3a9e2ffdac818f63fde1b629aab/assets/madison.png))
 [^1]: Said image of Madison, converted to a png to protect my metadata!
