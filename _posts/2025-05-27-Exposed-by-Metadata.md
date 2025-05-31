@@ -61,7 +61,7 @@ Ethically responsible behavior in these contexts requires recognizing metadata a
 Several data protection and compliance frameworks treat metadata as a regulated category of personal or sensitive data.  
 - **GDPR (European Union):** Metadata such as names, IP addresses, and geolocation qualifies as personal data. If leaked, this may trigger mandatory breach notification requirements and fines.  
 - **HIPAA (USA):** In healthcare settings, metadata that ties a patient to a document, even indirectly, can constitute a violation if not redacted before sharing.  
-- **FOIA (USA):** Government agencies must remove metadata from public records to prevent unintentional disclosure of internal deliberations, author identities, or draft comments.  
+- **FOIA (USA):** Government agencies must *retain* metadata on public record.  
 Courts have also acknowledged metadata as a form of evidence. It is admissible in litigation and is frequently used to authenticate documents, establish authorship, or challenge timelines. Conversely, failure to preserve or sanitize metadata has led to sanctions, case dismissals, and reputational harm.  
 ## Organizational Exposure
 Improper handling of metadata can result in legal liability for data breaches, unintentional exposure of trade secrets or proprietary tools, or even embarrassment or reputational damage from internal document leaks. Real-world incidents, ranging from leaked policy documents with author metadata to photos revealing classified locations, underscore the seriousness of these risks. Cybersecurity professionals, developers, and organizational leaders share responsibility for mitigating this class of vulnerability. This includes implementing policies, training staff, and regularly verifying that metadata is not present before sharing files externally.
@@ -81,8 +81,9 @@ Regularly scan cloud storage and document repositories for files with residual m
 Metadata represents one of the most consistently overlooked security risks in modern computing. It is embedded invisibly, distributed routinely, and rarely considered by end users. Yet it can disclose author identities, physical locations, internal timelines, and system configurations. The solution is not to eliminate metadata—it serves legitimate technical functions—but to treat it as a sensitive, security-relevant feature. By building metadata awareness into development, communication, and disclosure practices, we can prevent silent breaches and ensure our tools don't betray us. In cybersecurity, we are often told to protect our assets. Metadata is an asset, and we must defend it even when we don't see it.
 <br /><br />
 # Additional Materials  
-  
-  
+[Using Metadata in FOIA Documents](https://www.justice.gov/oip/blog/using-metadata-foia-documents-posted-online-lay-foundation-building-government-wide-foia)  
+[Is email metadata a risk to HIPAA](https://www.paubox.com/blog/is-email-metadata-a-risk-to-hipaa-compliance-in-email-communications#:~:text=1%20min%20read-,Is%20email%20metadata%20a%20risk%20to%20HIPAA%20compliance%20in%20email,to%20a%20larger%2Dscale%20breach.)  
+[How to analyze metadata and hide it from hackers](https://outpost24.com/blog/metadata-hackers-best-friend/)  
 <br /><br />
 *Footnotes* 
   
