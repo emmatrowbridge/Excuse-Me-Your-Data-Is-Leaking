@@ -22,7 +22,7 @@ To understand metadata leaks as a security concern, it is essential to frame the
 # Extracting Metadata from a Photo (A Demo)
 To illustrate the real-world implications of metadata leakage, let us examine a seemingly innocuous image: a personal photo of my dog, Madison[^1], captured on a modern smartphone and saved in the HEIC (High-Efficiency Image Container) format.  
 
-[^1]: ![Said image of Madison](assets/madison.png)
+[^1]: ![Said image of Madison, converted to a png to protect my metadata!](assets/madison.png)
 
 ### 1. Understanding the Source File
 Smartphones embed a variety of metadata into image headers using the Exchangeable Image File Format (EXIF). These headers are automatically populated and include:
@@ -44,7 +44,8 @@ Running the command ``exiftool IMG_5197.HEIC`` where ``IMG_5197.HEIC`` is the pe
 - **Camera Model Name**: iPhone 13 Pro
 - **Software:** 16.6.1
   
-> NOTE: To see the full output, download my image and run the command yourself!
+> NOTE: Try it for yourself! Run the ``exiftool`` command on one of your images and see what secrets are revealed.
+  
 This snippet alone reveals the precise time and place the image was captured, the specific device used, and the system software it was running. With a single copy-paste into Google Maps, we can identify the capture location as Mashpee, Massachusetts— on the southern edge of Cape Cod.  
 This is not theoretical. It is a concrete demonstration of how easily sensitive location data can be obtained from a digital photo without interacting with any systems or triggering any alerts.  
   
