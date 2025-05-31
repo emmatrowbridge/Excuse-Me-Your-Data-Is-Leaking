@@ -86,6 +86,11 @@ By approaching file sharing with awareness, enforcing metadata hygiene, and equi
 
 
 <br /><br />
-*Footnotes*  
-![Madison](https://github.com/emmatrowbridge/Excuse-Me-Your-Data-Is-Leaking/blob/8d259ad09487d3a9e2ffdac818f63fde1b629aab/assets/madison.png)
+*Footnotes* 
+<iframe
+  width="560" height="315"
+  src="[https://www.youtube-nocookie.com/embed/2-zQp26nbY8](https://github.com/emmatrowbridge/Excuse-Me-Your-Data-Is-Leaking/blob/8d259ad09487d3a9e2ffdac818f63fde1b629aab/assets/madison.png)"
+  frameborder="0"
+  allowfullscreen>
+</iframe>  
 [^1]: Said image of Madison, converted to a png to protect my metadata!
