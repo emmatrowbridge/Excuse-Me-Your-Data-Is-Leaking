@@ -22,7 +22,7 @@ To understand metadata leaks as a security concern, it is essential to frame the
 # Extracting Metadata from a Photo (A Demo)
 To illustrate the real-world implications of metadata leakage, let us examine a seemingly innocuous image: a personal photo of my dog, Madison[^1], captured on a modern smartphone and saved in the HEIC (High-Efficiency Image Container) format.  
 
-[^1]: ![Said image of Madison](assets/IMG_5197.HEIC)
+[^1]: ![Said image of Madison](assets/madison.png)
 
 ### 1. Understanding the Source File
 Smartphones embed a variety of metadata into image headers using the Exchangeable Image File Format (EXIF). These headers are automatically populated and include:
