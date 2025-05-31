@@ -89,7 +89,7 @@ By approaching file sharing with awareness, enforcing metadata hygiene, and equi
 *Footnotes* 
 <iframe
   width="560" height="315"
-  src="https://github.com/emmatrowbridge/Excuse-Me-Your-Data-Is-Leaking/blob/8d259ad09487d3a9e2ffdac818f63fde1b629aab/assets/madison.png"
+  src="https://raw.githubusercontent.com/emmatrowbridge/Excuse-Me-Your-Data-Is-Leaking/main/assets/madison.png"
   frameborder="0"
   allowfullscreen>
 </iframe>  
