@@ -33,10 +33,10 @@ def is_valid_username(username):
     return re.match(pattern, username)
 ```
 This example defines a username validation function using Python's ``re`` module, which implements a backtracking regex engine. Lets breakdown the pattern ``r"^(a+)+$"``:
-- "^ "indicates the start of a string
+- ``^`` indicates the start of a string
 - ``(a+)`` searches for one or more ``a`` character (captured as a group)
-- "+ "indicates one or more repetitions of that group
-- "$ "the end of the string
+- ``+`` indicates one or more repetitions of that group
+- ``$`` the end of the string
   
 In essence, this pattern matches strings that consist only of one or more repeated 'a's.  
     
@@ -45,7 +45,7 @@ Now consider this user input:
 ```
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaX
 ```
-This string contains a long sequence of ``a``'s followed by a non-matching character ``X ``. Thus, when this input is evaluated by the regex, the engine tries to match the entire string with the pattern "^(a+)+$ ". Because of the nested quantifiers (recursive "(a+)+``structure), the engine doesn't know how to partition the repeated ``a ``'s between the inner and outer loops. The engine then tries every possible grouping of the "a "'s to find a match that satisfies both quantifiers and the end-of-string anchor. When it finally reaches the "X ", it realizes the string does not match— but only after trying an exponential number of groupings. This behavior is called catastrophic backtracking.
+This string contains a long sequence of ``a``'s followed by a non-matching character ``X ``. Thus, when this input is evaluated by the regex, the engine tries to match the entire string with the pattern ``^(a+)+$``. Because of the nested quantifiers (recursive ``(a+)+``structure), the engine doesn't know how to partition the repeated ``a``'s between the inner and outer loops. The engine then tries every possible grouping of the ``a``'s to find a match that satisfies both quantifiers and the end-of-string anchor. When it finally reaches the ``X``, it realizes the string does not match— but only after trying an exponential number of groupings. This behavior is called catastrophic backtracking.
 > NOTE: Backtracking regex engines operate by trying different combinations of matches when multiple options are available. In a well-formed regex, this process terminates quickly. But when ambiguous quantifiers are nested, the engine may explore a decision tree of match attempts, which grows exponentially with input size. Because backtracking explores permutations recursively, each additional character drastically increases the number of steps required to fail.  
 
 ### 4. The Consequence
@@ -61,7 +61,7 @@ As with all side-channel research, complexity attacks raise challenging question
 - **Is disclosure justified?** Yes. Responsible disclosure of complexity vulnerabilities is not only ethical, it's essential. If a system permits unbounded execution time due to input structure, users are at risk.
   
 ### Legal Landscape
-- **CFAA:** Under the Computer Fraud and Abuse Act, sending crafted inputs to intentionally degrade system performance may be considered "unauthorized access" or "causing damage to a protected computer," especially if availability is affected. Courts have interpreted denial-of-service attacks as violations under certain conditions.
+- **CFAA:** Under the Computer Fraud and Abuse Act, sending crafted inputs to intentionally degrade system performance may be considered unauthorized access or causing damage to a protected computer, especially if availability is affected. Courts have interpreted denial-of-service attacks as violations under certain conditions.
 - **International Frameworks:** Several jurisdictions now recognize resource exhaustion attacks as cybercrime, even if they do not involve access violations or data theft.
 <br /><br />
 # Mitigations and Best Practices
@@ -69,7 +69,7 @@ Protecting against complexity attacks requires both engineering discipline and o
 - **Use Safer Regex Constructs**  
 Avoid nested quantifiers and ambiguous patterns; instead, use linear-time regex engines such as Google's Re2 or Rust's regex crate. These engines guarantee worst-case linear behavior and reject vulnerable expressions at compile time.  
 - **Apply Input Pre-Validation**
-Perform basic checks on input length and structure before feeding it into complex parsers or validators. This prevents trivial overloads. For example, the check "if len(input) > 256 "could act as a guard that dramatically reduces the attack surface.
+Perform basic checks on input length and structure before feeding it into complex parsers or validators. This prevents trivial overloads. For example, the check ``if len(input) > 256`` could act as a guard that dramatically reduces the attack surface.
 - **Limit Execution Time and Enforce Rate Limits**
 Use timeouts and execution quotas to constrain expensive operations. Many programming languages allow regex matching to run in separate threads with enforced time limits. Also, it detects repeated slow requests from the same client or pattern. Combine this with application-layer rate limiting to restrict the impact of brute-force complexity attempts.
 <br /><br />
