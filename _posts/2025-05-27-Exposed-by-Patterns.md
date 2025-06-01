@@ -59,6 +59,7 @@ As with all side-channel research, complexity attacks raise challenging question
 - **Is this a vulnerability or just bad design?** Complexity issues are often overlooked in development. While not bugs in the traditional sense, these flaws are security risks, and exploiting them to cause denial of service can be deeply disruptive.
 - **Is it ethical to demonstrate or exploit this issue?** No. Any form of ReDoS testing should be conducted in isolated environments or under explicit scope within a penetration testing agreement. Triggering these behaviors against live systems can cause real harm, even unintentionally.
 - **Is disclosure justified?** Yes. Responsible disclosure of complexity vulnerabilities is not only ethical, it’s essential. If a system permits unbounded execution time due to input structure, users are at risk.
+  
 ### Legal Landscape
 - **CFAA:** Under the Computer Fraud and Abuse Act, sending crafted inputs to intentionally degrade system performance may be considered “unauthorized access” or “causing damage to a protected computer,” especially if availability is affected. Courts have interpreted denial-of-service attacks as violations under certain conditions.
 - **International Frameworks:** Several jurisdictions now recognize resource exhaustion attacks as cybercrime, even if they do not involve access violations or data theft.
@@ -75,7 +76,7 @@ Use timeouts and execution quotas to constrain expensive operations. Many progra
 # Closing Thoughts
 Algorithmic complexity is often seen as an abstract concern, but in the hands of a determined adversary, it becomes a weapon. As we've seen, a single crafted string can trigger exponential CPU usage, slow down entire services, and leak the structure of your application’s logic all without breaking a single rule or writing a single exploit. Ultimately, the deeper lesson is that secure systems fail safely. Performance bottlenecks are not just annoyances; they are vulnerabilities when predictable and unbounded. Complexity attacks exploit the assumptions we make about “normal” input and stretch them to a breaking point. If you are a developer, engineer, or security analyst, take time to understand your tools' worst-case behaviors. If you are a defender, include complexity resilience in your threat modeling. And if you are a researcher, continue pushing the boundaries of what “safe input” really means.
 <br /><br />
-# Further Reading
+# Additional Materials 
 [Regular expression Denial of Service - ReDoS](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS)  
   
 [Understanding ReDoS Attack](https://www.geeksforgeeks.org/understanding-redos-attack/)  
