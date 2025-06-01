@@ -79,8 +79,10 @@ Metadata is rarely covered in standard digital literacy training. Organizations 
 - **Perform Metadata Audits**  
 Regularly scan cloud storage and document repositories for files with residual metadata. Tools can be scheduled to flag or block sensitive formats before distribution, ensuring policy enforcement through automation.
 <br /><br />
+  
 # Closing Thoughts
 Metadata represents one of the most consistently overlooked security risks in modern computing. It is embedded invisibly, distributed routinely, and rarely considered by end users. Yet it can disclose author identities, physical locations, internal timelines, and system configurations. The solution is not to eliminate metadata—it serves legitimate technical functions—but to treat it as a sensitive, security-relevant feature. By building metadata awareness into development, communication, and disclosure practices, we can prevent silent breaches and ensure our tools don't betray us. In cybersecurity, we are often told to protect our assets. Metadata is an asset, and we must defend it even when we don't see it.
+  
 <br /><br />
 # Additional Materials  
 [Using Metadata in FOIA Documents](https://www.justice.gov/oip/blog/using-metadata-foia-documents-posted-online-lay-foundation-building-government-wide-foia)  
