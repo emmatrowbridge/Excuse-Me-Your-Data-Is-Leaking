@@ -45,7 +45,7 @@ Now consider this user input:
 ```
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaX
 ```
-This string contains a long sequence of ``a``'s followed by a non-matching character ``X ``. Thus, when this input is evaluated by the regex, the engine tries to match the entire string with the pattern ``^(a+)+$``. Because of the nested quantifiers (recursive ``(a+)+``structure), the engine doesn't know how to partition the repeated ``a``'s between the inner and outer loops. The engine then tries every possible grouping of the ``a``'s to find a match that satisfies both quantifiers and the end-of-string anchor. When it finally reaches the ``X``, it realizes the string does not match— but only after trying an exponential number of groupings. This behavior is called catastrophic backtracking.
+This string contains a long sequence of ``a``'s followed by a non-matching character ``X``. Thus, when this input is evaluated by the regex, the engine tries to match the entire string with the pattern ``^(a+)+$``. Because of the nested quantifiers (recursive ``(a+)+``structure), the engine doesn't know how to partition the repeated ``a``'s between the inner and outer loops. The engine then tries every possible grouping of the ``a``'s to find a match that satisfies both quantifiers and the end-of-string anchor. When it finally reaches the ``X``, it realizes the string does not match— but only after trying an exponential number of groupings. This behavior is called catastrophic backtracking.
 > NOTE: Backtracking regex engines operate by trying different combinations of matches when multiple options are available. In a well-formed regex, this process terminates quickly. But when ambiguous quantifiers are nested, the engine may explore a decision tree of match attempts, which grows exponentially with input size. Because backtracking explores permutations recursively, each additional character drastically increases the number of steps required to fail.  
 
 ### 4. The Consequence
@@ -59,11 +59,12 @@ As with all side-channel research, complexity attacks raise challenging question
 - **Is this a vulnerability or just a bad design?** Complexity issues are often overlooked in development. While not bugs in the traditional sense, these flaws are security risks, and exploiting them to cause denial of service can be deeply disruptive.
 - **Is it ethical to demonstrate or exploit this issue?** No. Any form of ReDoS testing should be conducted in isolated environments or under explicit scope within a penetration testing agreement. Triggering these behaviors against live systems can cause real harm, even unintentionally.
 - **Is disclosure justified?** Yes. Responsible disclosure of complexity vulnerabilities is not only ethical, it's essential. If a system permits unbounded execution time due to input structure, users are at risk.
-  
+ 
 ### Legal Landscape
 - **CFAA:** Under the Computer Fraud and Abuse Act, sending crafted inputs to intentionally degrade system performance may be considered unauthorized access or causing damage to a protected computer, especially if availability is affected. Courts have interpreted denial-of-service attacks as violations under certain conditions.
-- **International Frameworks:** Several jurisdictions now recognize resource exhaustion attacks as cybercrime, even if they do not involve access violations or data theft.
+- **International Frameworks:** Several jurisdictions now recognize resource exhaustion attacks as cybercrime, even if they do not involve access violations or data theft.  
 <br /><br />
+  
 # Mitigations and Best Practices
 Protecting against complexity attacks requires both engineering discipline and operational controls. Fortunately, several defensive strategies are available.
 - **Use Safer Regex Constructs**  
@@ -72,6 +73,7 @@ Avoid nested quantifiers and ambiguous patterns; instead, use linear-time regex 
 Perform basic checks on input length and structure before feeding it into complex parsers or validators. This prevents trivial overloads. For example, the check ``if len(input) > 256`` could act as a guard that dramatically reduces the attack surface.
 - **Limit Execution Time and Enforce Rate Limits**
 Use timeouts and execution quotas to constrain expensive operations. Many programming languages allow regex matching to run in separate threads with enforced time limits. Also, it detects repeated slow requests from the same client or pattern. Combine this with application-layer rate limiting to restrict the impact of brute-force complexity attempts.
+  
 <br /><br />
 # Closing Thoughts
 Algorithmic complexity is often seen as an abstract concern, but in the hands of a determined adversary, it becomes a weapon. As we've seen, a single crafted string can trigger exponential CPU usage, slow down entire services, and leak the structure of your application's logic, all without breaking a single rule or writing a single exploit. Ultimately, the deeper lesson is that secure systems fail safely. Performance bottlenecks are not just annoyances; they are vulnerabilities when predictable and unbounded. Complexity attacks exploit the assumptions we make about "normal" input and stretch them to a breaking point. If you are a developer, engineer, or security analyst, take time to understand your tools' worst-case behaviors. If you are a defender, include complexity resilience in your threat modeling. And if you are a researcher, continue pushing the boundaries of what "safe input" really means.
